@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../App.css';
 import withListLoading from './withListLoading';
 
@@ -13,9 +14,10 @@ const List = (props) => {
           return (
             <li key={book.id} className='list'>
               <span className='repo-text'> {book.name} </span>
-              <div>Authors:{book.authors}</div>
+              <div>Authors: {book.authors}</div>
               <div>Comments: <a href=''>{book.comments_count}</a></div>
-              {/* <div>Characters: {book.bookscharacters}</div> todo*/}
+              <div>Published: {book.released}</div>
+              <div><a href={'/books/'.concat(book.id)}>View Book</a></div>
             </li>
           );
         })}
