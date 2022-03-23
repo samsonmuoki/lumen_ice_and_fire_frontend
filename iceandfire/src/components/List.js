@@ -8,8 +8,8 @@ const List = (props) => {
       {books.map((book) => {
         return (
           <li key={book.id} className='list'>
-            <span className='repo-text'>{book.name} </span>
-            <span className='repo-description'>{book.description}</span>
+            <span className='repo-text'> {book.name} </span>
+            <span className='repo-description'> {book.description}</span>
           </li>
         );
       })}
