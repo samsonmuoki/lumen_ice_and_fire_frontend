@@ -38,7 +38,7 @@ function App() {
 
   useEffect(() => {
     setAppState({ loading: true });
-    const apiUrl = `http://lumen-ice-and-fire-muoki.herokuapp.com/api/books`;
+    const apiUrl = `https://lumen-ice-and-fire-muoki.herokuapp.com/api/books`;
     fetch(apiUrl)
       .then((res) => res.json())
       .then((books) => {
