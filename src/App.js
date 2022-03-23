@@ -1,69 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+// import './App.css';
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Home from './components/Home';
+import BooksList from './components/BooksList';
+import CharactersList from './components/CharactersList';
 
-// export default App;
-
-
-import React, { useEffect, useState } from 'react';
-import './App.css';
-import List from './components/List';
-import withListLoading from './components/withListLoading';
-function App() {
-  const ListLoading = withListLoading(List);
-  const [appState, setAppState] = useState({
-    loading: false,
-    books: null,
-  });
-
-  useEffect(() => {
-    setAppState({ loading: true });
-    const apiUrl = `https://lumen-ice-and-fire-muoki.herokuapp.com/api/books`;
-    fetch(apiUrl)
-      .then((res) => res.json())
-      .then((books) => {
-        setAppState({ loading: false, books: books });
-      });
-  }, [setAppState]);
-  return (
-    <div className='App'>
-      <div className='container'>
-        <h1>ICE AND FIRE</h1>
+class App extends Component {
+  render() {
+    return (
+      <Router>
+        <div className="App">
+          <ul className="App-header">
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/books">Available Books</Link>
+            </li>
+            <li>
+              <Link to="/characters">Available Characters</Link>
+            </li>
+          </ul>
+        <Routes>
+            <Route exact path='/' element={< Home />}></Route>
+            <Route exact path='/books' element={< BooksList />}></Route>
+            <Route exact path='/characters' element={< CharactersList />}></Route>
+        </Routes>
       </div>
-      <div className='repo-container'>
-        <ListLoading isLoading={appState.loading} books={appState.books} />
-      </div>
-      <footer>
-        <div className='footer'>
-          Built{' '}
-          <span role='img' aria-label='love'>
-            💚
-          </span>{' '}
-          by Samson Muoki
-        </div>
-      </footer>
-    </div>
-  );
+    </Router>
+    );
+  }
 }
+
 export default App;
 
