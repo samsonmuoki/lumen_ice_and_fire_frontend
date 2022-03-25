@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Select from 'react-select';
 import '../App.css';
 import withListLoading from './withListLoading';
 
@@ -34,7 +33,7 @@ function CharactersList() {
 
   useEffect(() => {
     setAppState({ loading: true });
-    var apiUrl = `https://lumen-ice-and-fire-muoki.herokuapp.com/api/characters`;
+    var apiUrl = `https://lumen-ice-and-fire-muoki.herokuapp.com/api/characters?gender=Female`;
     fetch(apiUrl)
       .then((res) => res.json())
       .then((characters) => {

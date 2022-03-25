@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './components/Home';
 import BooksList from './components/BooksList';
+import SingleBook from './components/SingleBook';
 import CharactersList from './components/CharactersList';
 
 class App extends Component {
@@ -26,7 +27,11 @@ class App extends Component {
         <Routes>
             <Route exact path='/' element={< Home />}></Route>
             <Route exact path='/books' element={< BooksList />}></Route>
+            <Route exact path='/books/:id' element={< SingleBook />}></Route>
+            <Route exact path='/books/:id/comments' element={< SingleBook />}></Route>
             <Route exact path='/characters' element={< CharactersList />}></Route>
+            <Route exact path='/characters/female' element={< CharactersList />}></Route>
+            <Route exact path='/characters/male' element={< CharactersList />}></Route>
         </Routes>
       </div>
     </Router>
