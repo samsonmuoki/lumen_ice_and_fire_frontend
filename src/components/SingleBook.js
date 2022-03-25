@@ -5,23 +5,18 @@ import withListLoading from './withListLoading';
 
 
 const Book = (props) => {
+    const [content, setContent] = useState('');
     function handleSubmit(e) {
-        alert('Your comment was submitted:');
+      alert('Your comment was submitted:');
         e.preventDefault();
+        var bookId = props.book.id;
+        var url = 'https://lumen-ice-and-fire-muoki.herokuapp.com/api/comments?';
+        var commentUrl = url.concat('book_id=').concat(bookId).concat('&').concat('content=').concat(content)
         const requestOptions = {
             method: 'POST',
-            headers: { 
-                'Content-Type': 'application/json',
-                // 'Authorization': 'Bearer my-token',
-                // 'My-Custom-Header': 'foobar'
-            },
-            body: JSON.stringify({ 
-                book_id: 1,
-                content: 'React Request Example' })
         };
-        fetch('https://lumen-ice-and-fire-muoki.herokuapp.com/api/comments', requestOptions)
+        fetch(commentUrl, requestOptions)
             .then(response => response.json());
-            // .then(data => this.setState({ postId: data.id }));
     }
     const { book } = props;
     if (!book || book.length === 0) return <p>Details not found, sorry</p>;
@@ -44,9 +39,7 @@ const Book = (props) => {
         <div>COMMENTS
             <form method='post' onSubmit={handleSubmit}>
                 <h1> Add a comment</h1>
-                {/* <input type='textarea' name='content'/> */}
-                <textarea name='content'/>
-                {/* <input type='submit' value='Submit'/> */}
+                <textarea value={content} onInput={e => setContent(e.target.value)}/>
                 <button type="submit">Submit</button>
             </form>
             <ul>
@@ -64,7 +57,7 @@ const Book = (props) => {
   };
 
 
-function SingleBook(props) {
+function SingleBook() {
   const { id } = useParams()
   var url = 'https://lumen-ice-and-fire-muoki.herokuapp.com/api/books/';
   var apiUrl = url.concat(id)
