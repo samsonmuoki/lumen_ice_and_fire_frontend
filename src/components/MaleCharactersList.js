@@ -4,24 +4,27 @@ import withListLoading from './withListLoading';
 
 
 const List = (props) => {
-    const { characters } = props;
-    if (!characters || characters.length === 0) return <p>No characters, sorry</p>;
-    return (
-      <ul>
-        <h2 className='list-head'>Available characters</h2>
-        {characters.map((character) => {
-          return (
-            <li key={character.id} className='list'>
-              <div><span className='repo-text'>NAME: {character.name} </span></div>
-              <div>GENDER:{character.gender}</div>
-              <div>AGE IN YEARS: <a href=''>{character.age_in_years}</a></div>
-              <div>AGE IN MONTHS: <a href=''>{character.age_in_months}</a></div>
-            </li>
-          );
-        })}
-      </ul>
-    );
-  };
+  const { characters } = props;
+  if (!characters || characters.length === 0) return <p>No characters, sorry</p>;
+  return (
+    <ul>
+      <h2 className='list-head'>Available characters</h2>
+      <div>Total characters: {characters.number_of_characters}</div>
+      <div>Total Age in years: {characters.total_age_in_years}</div>
+      <div>Total Age in months: {characters.total_age_in_months}</div>
+      {characters.characters.map((character) => {
+        return (
+          <li key={character.id} className='list'>
+            <div><span className='repo-text'>NAME: {character.name} </span></div>
+            <div>GENDER:{character.gender}</div>
+            <div>AGE IN YEARS: <a href=''>{character.age_in_years}</a></div>
+            <div>AGE IN MONTHS: <a href=''>{character.age_in_months}</a></div>
+          </li>
+        );
+      })}
+    </ul>
+  );
+};
 
 
 function MaleCharactersList() {

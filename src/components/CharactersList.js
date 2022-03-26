@@ -10,7 +10,10 @@ const List = (props) => {
     return (
       <ul>
         <h2 className='list-head'>Available characters</h2>
-        {characters.map((character) => {
+        <div>Total characters: {characters.number_of_characters}</div>
+        <div>Total Age in years: {characters.total_age_in_years}</div>
+        <div>Total Age in months: {characters.total_age_in_months}</div>
+        {characters.characters.map((character) => {
           return (
             <li key={character.id} className='list'>
               <div><span className='repo-text'>NAME: {character.name} </span></div>
