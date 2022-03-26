@@ -24,7 +24,7 @@ const List = (props) => {
   };
 
 
-function CharactersList() {
+function FemaleCharactersList() {
   const ListLoading = withListLoading(List);
   const [appState, setAppState] = useState({
     loading: false,
@@ -66,4 +66,4 @@ function CharactersList() {
     </div>
   );
 }
-export default CharactersList;
+export default FemaleCharactersList;

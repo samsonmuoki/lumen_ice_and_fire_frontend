@@ -7,6 +7,8 @@ import Home from './components/Home';
 import BooksList from './components/BooksList';
 import SingleBook from './components/SingleBook';
 import CharactersList from './components/CharactersList';
+import FemaleCharactersList from './components/FemaleCharactersList';
+import MaleCharactersList from './components/MaleCharactersList';
 
 class App extends Component {
   render() {
@@ -30,8 +32,8 @@ class App extends Component {
             <Route exact path='/books/:id' element={< SingleBook />}></Route>
             <Route exact path='/books/:id/comments' element={< SingleBook />}></Route>
             <Route exact path='/characters' element={< CharactersList />}></Route>
-            <Route exact path='/characters/female' element={< CharactersList />}></Route>
-            <Route exact path='/characters/male' element={< CharactersList />}></Route>
+            <Route exact path='/characters/female' element={< FemaleCharactersList />}></Route>
+            <Route exact path='/characters/male' element={< MaleCharactersList />}></Route>
         </Routes>
       </div>
     </Router>
