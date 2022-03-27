@@ -51,7 +51,7 @@ const List = (props) => {
 };
 
 
-function FemaleCharactersList() {
+function SortCharactersByNameAscending() {
   const ListLoading = withListLoading(List);
   const [appState, setAppState] = useState({
     loading: false,
@@ -60,7 +60,7 @@ function FemaleCharactersList() {
 
   useEffect(() => {
     setAppState({ loading: true });
-    var apiUrl = `https://lumen-ice-and-fire-muoki.herokuapp.com/api/characters?gender=Female`;
+    var apiUrl = `https://lumen-ice-and-fire-muoki.herokuapp.com/api/characters?sort_by_name=asc`;
     fetch(apiUrl)
       .then((res) => res.json())
       .then((characters) => {
@@ -101,4 +101,4 @@ function FemaleCharactersList() {
     </div>
   );
 }
-export default FemaleCharactersList;
+export default SortCharactersByNameAscending;

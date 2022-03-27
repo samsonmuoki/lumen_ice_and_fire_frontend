@@ -17,40 +17,41 @@ const Book = (props) => {
         };
         fetch(commentUrl, requestOptions)
             .then(response => response.json());
+      window.location.reload(false);
     }
     const { book } = props;
     if (!book || book.length === 0) return <p>Details not found, sorry</p>;
     return (
-      <div>
-        <h2 className='list-head'>{book.name}</h2>
+      <div className='single-book-details'>
+        <div className='single-book-name'>{book.name}</div>
         <div>Authors: {book.authors}</div>
         <div>Published: {book.released}</div>
-        <div>Characters: {book.bookscharacters[0].character_id}</div>
-        <div>CHARACTERS</div>
-        <ul>
+        <div className='single-book-characters-header'>CHARACTERS</div>
+        <div className='single-book-characters-list'>
             {book.bookscharacters.map((character) =>
-                <li key={character.id} className='list'>
-                    <span className='repo-text'>ID: {character.id} </span>
-                    <div>Name: {character.name}</div>
-                    <div><a href=''>View Character</a></div>
-                </li>
+                <div key={character.id} className='card-character-details'>
+                    <div className='character-id'>ID: {character.id} </div>
+                    <div className='character-name'>Name: {character.name}</div>
+                    <a href=''><div className='view-character-link'>View Character</div></a>
+                </div>
             )}
-        </ul>
-        <div>COMMENTS
+        </div>
+        <div className='single-book-comments'>
+          <div className='comments-header'>COMMENTS</div>
             <form method='post' onSubmit={handleSubmit}>
-                <h1> Add a comment</h1>
+                <div className='add-comment-header'> Add a comment</div>
                 <textarea value={content} onInput={e => setContent(e.target.value)}/>
                 <button type="submit">Submit</button>
             </form>
-            <ul>
+            <div className='single-book-comments-list'>
                 {book.comments.map((comment) =>
-                    <li key={comment.id} className='list'>
-                        <div className='repo-text'>Date: {comment.created_at} </div>
-                        <div className='repo-text'>Content: {comment.content} </div>
-                        <div>IP ADDRESS: {comment.ip_address} </div>
-                    </li>
+                    <div key={comment.id} className='single-comment'>
+                        <div className='comment-text'>Date: {comment.created_at} </div>
+                        <div className='comment-text'>IP ADDRESS: {comment.ip_address} </div>
+                        <div className='comment-content'>{comment.content} </div>
+                    </div>
                 )}
-            </ul>
+            </div>
         </div>
       </div>
     );
@@ -78,7 +79,6 @@ function SingleBook() {
   return (
     <div className='App'>
       <div className='container'>
-        <h1>THE WORLD OF ICE AND FIRE</h1>
       </div>
       <div className='repo-container'>
         <ListLoading isLoading={appState.loading} book={appState.book} />
