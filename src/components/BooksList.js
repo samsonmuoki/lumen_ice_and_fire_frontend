@@ -5,25 +5,25 @@ import withListLoading from './withListLoading';
 
 
 const List = (props) => {
-    const { books } = props;
-    if (!books || books.length === 0) return <p>No books, sorry</p>;
-    return (
-      <ul>
-        <h2 className='list-head'>Available Books</h2>
-        {books.map((book) => {
-          return (
-            <li key={book.id} className='list'>
-              <span className='repo-text'> {book.name} </span>
-              <div>Authors: {book.authors}</div>
-              <div>Comments: <a href=''>{book.comments_count}</a></div>
-              <div>Published: {book.released}</div>
-              <div><a href={'/books/'.concat(book.id)}>View Book</a></div>
-            </li>
-          );
-        })}
-      </ul>
-    );
-  };
+  const { books } = props;
+  if (!books || books.length === 0) return <p>No books, sorry</p>;
+  return (
+    <div className='body'>
+      {books.map((book) => {
+        return (
+          <div key={book.id} className='card-book'>
+            <div className='book-title'>Title: {book.name} </div>
+            <div>Authors: {book.authors}</div>
+            <div>Comments: {book.comments_count}</div>
+            <div>Published: {book.released}</div>
+            <a href={'/books/'.concat(book.id)}><div className='view-book-link'>View Book</div></a>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
 
 
 function BooksList() {
@@ -45,7 +45,6 @@ function BooksList() {
   return (
     <div className='App'>
       <div className='container'>
-        <h1>THE WORLD OF ICE AND FIRE</h1>
       </div>
       <div className='repo-container'>
         <ListLoading isLoading={appState.loading} books={appState.books} />
