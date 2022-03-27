@@ -31,7 +31,7 @@ const Book = (props) => {
             {book.bookscharacters.map((character) =>
                 <div key={character.id} className='card-character-details'>
                     <div className='character-id'>ID: {character.id} </div>
-                    <div className='character-name'>Name: {character.name}</div>
+                    <div className='character-name'>Name: {character.character_name}</div>
                     <a href=''><div className='view-character-link'>View Character</div></a>
                 </div>
             )}
