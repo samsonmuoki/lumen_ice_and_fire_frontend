@@ -31,7 +31,7 @@ const Book = (props) => {
                 <div key={character.id} className='card-character-details'>
                     <div className='character-id'>ID: {character.character_id} </div>
                     <div className='character-name'>Name: {character.character_name}</div>
-                    <a href={'/characters/'.concat(character.id)}><div className='view-character-link'>View Character</div></a>
+                    <a href={'/characters/'.concat(character.character_id)}><div className='view-character-link'>View Character</div></a>
                 </div>
             )}
         </div>
