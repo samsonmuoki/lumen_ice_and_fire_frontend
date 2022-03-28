@@ -225,6 +225,10 @@ form button:hover {
   text-decoration: none;
 }
 
+.sort-by {
+  margin-top: 15px;
+}
+
 .footer {
   margin-top: 20px;
   padding: 40px;

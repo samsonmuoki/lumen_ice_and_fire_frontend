@@ -21,7 +21,7 @@ const List = (props) => {
               <div>GENDER:{character.gender}</div>
               <div>AGE IN YEARS: {character.age_in_years}</div>
               <div>AGE IN MONTHS: {character.age_in_months}</div>
-              <a href=''><div className='view-character-link'>View Character</div></a>
+              <a href={'/characters/'.concat(character.id)}><div className='view-character-link'>View Character</div></a>
             </div>
           );
         })}
@@ -55,15 +55,21 @@ function CharactersList() {
         <div><a href='/characters/male'>Male</a></div>
       </div>
       <div className='Sorts'>
+        <div className='sort-by'>
         Sort by GENDER:
-        <div><a href='/characters/sort_by_gender_asc'>Ascending</a></div>
-        <div><a href='/characters/sort_by_gender_desc'>Descending</a></div>
-        Sort by AGE:
-        <div><a href='/characters/sort_by_age_asc'>Ascending</a></div>
-        <div><a href='/characters/sort_by_age_desc'>Descending</a></div>
-        Sort by NAME:
-        <div><a href='/characters/sort_by_name_asc'>Ascending</a></div>
-        <div><a href='/characters/sort_by_name_desc'>Descending</a></div>
+          <div><a href='/characters/sort_by_gender_asc'>Ascending</a></div>
+          <div><a href='/characters/sort_by_gender_desc'>Descending</a></div>
+        </div>
+        <div className='sort-by'>
+          Sort by AGE:
+          <div><a href='/characters/sort_by_age_asc'>Ascending</a></div>
+          <div><a href='/characters/sort_by_age_desc'>Descending</a></div>
+        </div>
+        <div className='sort-by'>
+          Sort by NAME:
+          <div><a href='/characters/sort_by_name_asc'>Ascending</a></div>
+          <div><a href='/characters/sort_by_name_desc'>Descending</a></div>
+        </div>
       </div>
       <div className='repo-container'>
         <ListLoading isLoading={appState.loading} characters={appState.characters} />

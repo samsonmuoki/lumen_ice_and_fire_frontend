@@ -7,7 +7,6 @@ import withListLoading from './withListLoading';
 const Book = (props) => {
     const [content, setContent] = useState('');
     function handleSubmit(e) {
-      alert('Your comment was submitted:');
         e.preventDefault();
         var bookId = props.book.id;
         var url = 'https://lumen-ice-and-fire-muoki.herokuapp.com/api/comments?';
@@ -32,7 +31,7 @@ const Book = (props) => {
                 <div key={character.id} className='card-character-details'>
                     <div className='character-id'>ID: {character.character_id} </div>
                     <div className='character-name'>Name: {character.character_name}</div>
-                    <a href=''><div className='view-character-link'>View Character</div></a>
+                    <a href={'/characters/'.concat(character.id)}><div className='view-character-link'>View Character</div></a>
                 </div>
             )}
         </div>

@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Home from './components/Home';
 import BooksList from './components/BooksList';
 import SingleBook from './components/SingleBook';
+import SingleCharacter from './components/SingleCharacter';
 import CharactersList from './components/CharactersList';
 import FemaleCharactersList from './components/FemaleCharactersList';
 import MaleCharactersList from './components/MaleCharactersList';
@@ -41,6 +42,7 @@ class App extends Component {
               <Route exact path='/books/:id' element={< SingleBook />}></Route>
               <Route exact path='/books/:id/comments' element={< SingleBook />}></Route>
               <Route exact path='/characters' element={< CharactersList />}></Route>
+              <Route exact path='/characters/:id' element={< SingleCharacter />}></Route>
               <Route exact path='/characters/female' element={< FemaleCharactersList />}></Route>
               <Route exact path='/characters/male' element={< MaleCharactersList />}></Route>
               <Route exact path='/characters/sort_by_gender_asc' element={< SortCharactersByGenderAscending />}></Route>
